@@ -1,0 +1,498 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Genuine AI stuff here.</title>
+
+  <style>
+    :root {
+      --bg: #f5f5f2;
+      --black: #101010;
+      --muted: #777773;
+      --line: #deded8;
+      --card: #ffffff;
+      --accent: #635bff;
+      --accent-soft: #eeedff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: min(680px, calc(100% - 36px));
+      margin: auto;
+      padding: 76px 0 50px;
+    }
+
+    /* TOP */
+
+    header {
+      margin-bottom: 64px;
+    }
+
+    .handle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      margin-bottom: 24px;
+
+      font-size: 13px;
+      font-weight: 650;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .handle-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 610px;
+
+      font-size: clamp(42px, 8vw, 68px);
+      line-height: .98;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .intro {
+      max-width: 490px;
+
+      margin-top: 23px;
+
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+
+    /* SECTION */
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 13px;
+    }
+
+    .section-title {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: #8b8b85;
+    }
+
+    .count {
+      font-size: 11px;
+      color: #999992;
+    }
+
+
+    /* GUIDE CARDS */
+
+    .guides {
+      display: grid;
+      gap: 9px;
+    }
+
+    .guide {
+      position: relative;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 24px;
+
+      padding: 23px 21px;
+
+      background: var(--card);
+
+      border: 1px solid #e4e4df;
+      border-radius: 10px;
+
+      color: var(--black);
+      text-decoration: none;
+
+      transition:
+        transform .16s ease,
+        border-color .16s ease,
+        box-shadow .16s ease;
+    }
+
+    .guide:hover {
+      transform: translateY(-2px);
+
+      border-color: #c8c8c1;
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,.045);
+    }
+
+    .guide-info {
+      min-width: 0;
+    }
+
+    .tag {
+      display: inline-block;
+
+      margin-bottom: 8px;
+      padding: 4px 7px;
+
+      border-radius: 4px;
+
+      background: var(--accent-soft);
+      color: var(--accent);
+
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .guide-title {
+      margin-bottom: 5px;
+
+      font-size: 17px;
+      line-height: 1.3;
+      font-weight: 680;
+
+      letter-spacing: -.025em;
+    }
+
+    .guide-description {
+      max-width: 510px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .arrow {
+      flex: 0 0 auto;
+
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid #e4e4df;
+      border-radius: 50%;
+
+      color: #777;
+      font-size: 17px;
+
+      transition:
+        background .16s ease,
+        color .16s ease,
+        transform .16s ease;
+    }
+
+    .guide:hover .arrow {
+      background: var(--black);
+      border-color: var(--black);
+      color: white;
+
+      transform: translateX(2px);
+    }
+
+
+    /* SECOND GUIDE */
+
+    .coming {
+      opacity: .58;
+    }
+
+    .coming .tag {
+      background: #eeeeeb;
+      color: #777;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-top: 54px;
+      padding-top: 19px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-left {
+      color: #999992;
+      font-size: 12px;
+    }
+
+    .social {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social a {
+      color: #777773;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .social a:hover {
+      color: var(--black);
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .page {
+        padding-top: 46px;
+      }
+
+      header {
+        margin-bottom: 48px;
+      }
+
+      h1 {
+        font-size: 47px;
+      }
+
+      .intro {
+        font-size: 14px;
+      }
+
+      .guide {
+        padding: 19px 16px;
+      }
+
+      .guide-title {
+        font-size: 16px;
+      }
+
+      .guide-description {
+        font-size: 12.5px;
+      }
+
+      footer {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="page">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+      <a
+        class="handle"
+        href="https://twitter.com/asssetstack"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="handle-dot"></span>
+        @asssetstack
+      </a>
+
+
+      <h1>
+        Genuine AI<br>
+        <span>stuff here.</span>
+      </h1>
+
+
+      <p class="intro">
+        No recycled threads. No motivational fluff.
+        Just useful guides, ideas and resources around AI
+        and building online.
+      </p>
+
+    </header>
+
+
+
+    <!-- GUIDES -->
+
+    <section>
+
+      <div class="section-head">
+
+        <div class="section-title">
+          GUIDES
+        </div>
+
+        <div class="count">
+          02 resources
+        </div>
+
+      </div>
+
+
+      <div class="guides">
+
+
+        <!-- GUIDE 01 -->
+
+        <a
+          class="guide"
+          href="https://drive.google.com/file/d/1VBXOkqy0WLeQK5lYoXkXTjfHGkI0ixl6/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="guide-info">
+
+            <div class="tag">
+              FREE
+            </div>
+
+            <div class="guide-title">
+              AI Side Hustle Guide
+            </div>
+
+            <div class="guide-description">
+              A practical guide to finding and building
+              AI-powered side hustles.
+            </div>
+
+          </div>
+
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <!-- GUIDE 02 -->
+
+        <a
+          class="guide"
+          href="https://drive.google.com/file/d/1LFs2YrtsT9zIhsban1ahXZh38MPDivy3/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="guide-info">
+
+            <div class="tag">
+              FREE
+            </div>
+
+            <div class="guide-title">
+              New AI Guide
+            </div>
+
+            <div class="guide-description">
+              A practical resource from @asssetstack.
+              Open the guide to read it.
+            </div>
+
+          </div>
+
+
+          <div class="arrow">
+            →
+          </div>
+
+        </a>
+
+
+
+        <!-- FUTURE -->
+
+        <div class="guide coming">
+
+          <div class="guide-info">
+
+            <div class="tag">
+              SOON
+            </div>
+
+            <div class="guide-title">
+              More coming.
+            </div>
+
+            <div class="guide-description">
+              New guides will appear here.
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <div class="footer-left">
+        © 2026 asssetstack
+      </div>
+
+      <div class="social">
+
+        <a
+          href="https://twitter.com/asssetstack"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Twitter / X
+        </a>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+</body>
+</html>
+```
